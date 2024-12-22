@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #1e3c72, #2a5298);
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Texte principal */
+.message {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: glow 2s ease-in-out infinite;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+.year {
+    display: flex;
+    align-items: center;
+    font-size: 150px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.year span {
+    position: relative;
+    animation: popUp 3s ease-in-out forwards;
+}
+
+.year .past {
+    color: #ff6f61;
+    animation-delay: 0s;
+}
+
+.year .now {
+    color: #00ff7f;
+    animation-delay: 1s;
+}
+
+/* Balloons */
+.balloons {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+}
+
+.balloon {
+    width: 80px;
+    height: 100px;
+    background: linear-gradient(135deg, #ff6f61, #ffcc00);
+    border-radius: 50%;
+    position: absolute;
+    bottom: -150px;
+    animation: floatUp 12s ease-in-out infinite;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.balloon:nth-child(2) {
+    background: linear-gradient(135deg, #39ff14, #00aaff);
+    animation-delay: 2s;
+    transform: scale(1.2);
+}
+
+.balloon:nth-child(3) {
+    background: linear-gradient(135deg, #ff007f, #ff6fff);
+    animation-delay: 4s;
+    transform: scale(0.8);
+}
+
+.balloon:nth-child(4) {
+    background: linear-gradient(135deg, #ff00ff, #00ffff);
+    animation-delay: 6s;
+    transform: scale(1.5);
+}
+
+.balloon::before {
+    content: "";
+    width: 2px;
+    height: 50px;
+    background: white;
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Feux d'artifice */
+.fireworks {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.firework {
+    width: 10px;
+    height: 10px;
+    background: radial-gradient(circle, #ffcc00, transparent);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    animation: explode 2s ease-in-out infinite;
+}
+
+.firework:nth-child(2) {
+    background: radial-gradient(circle, #ff007f, transparent);
+    animation-delay: 0.5s;
+}
+
+.firework:nth-child(3) {
+    background: radial-gradient(circle, #00ff7f, transparent);
+    animation-delay: 1s;
+}
+
+/* Confettis */
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    animation: fallConfetti 10s linear infinite;
+}
+
+.confetti::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #ffcc00, transparent, transparent);
+    animation: confettiBounce 2s ease-in-out infinite;
+}
+
+/* Animations */
+@keyframes glow {
+    0%, 100% {
+        text-shadow: 0 0 20px #ffffff, 0 0 30px #ffcc00, 0 0 40px #ff007f;
+    }
+    50% {
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #00ff7f, 0 0 30px #ffcc00;
+    }
+}
+
+@keyframes popUp {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px);
+    }
+    100% {
+        transform: translateY(-100vh);
+    }
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.7;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes fallConfetti {
+    0% {
+        transform: translateY(-10%);
+    }
+    100% {
+        transform: translateY(100%);
+    }
+}
